@@ -2,7 +2,9 @@
 title: "jstanfield-class1-participation"
 author: "James Stanfield"
 date: "1/13/2020"
-output: word_document
+output: 
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r setup, include=FALSE}
