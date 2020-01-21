@@ -7,10 +7,15 @@ output:
     variant: gfm
 ---
 
+![test]"(C:/Users/Richard/Documents/Data Science/GDAT515/JStanfield---Assignment-1/images/BadViz.PNG")
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 options(scipen = 999)
+
+
 ```
 
 ```{r}

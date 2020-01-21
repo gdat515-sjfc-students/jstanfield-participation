@@ -1,3 +1,6 @@
+\[test\]“(C:/Users/Richard/Documents/Data
+Science/GDAT515/JStanfield—Assignment-1/images/BadViz.PNG”)
+
 ``` r
 #install.packages("gapminder")
 
