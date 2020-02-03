@@ -1,0 +1,47 @@
+---
+title: "Jstanfield - Class 4 - Participation"
+author: "James Stanfield"
+date: "2/3/2020"
+output: :
+   md_document:
+    variant: gfm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
