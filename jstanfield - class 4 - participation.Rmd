@@ -2,32 +2,40 @@
 title: "Jstanfield - class 4 - participation"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
-    vertical_layout: fill
+    storyboard: true
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
 library(tidyverse)
 library(shiny)
+library(ggplot2)
+
+library(datasets)
+mtcars -> car
 ```
 
-Column {data-width=650}
+
+Row {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Structure of mtcars data
 
 ```{r}
-
+str(car)
 ```
 
-Column {data-width=350}
+*** mtcars from {datasets}
+
+Row {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Some Quick ggplot for mpg, wt, and cyl
 
 ```{r}
-
+ggplot(data = car, mapping = aes(x = wt, y = mpg, color = cyl))+
+  geom_point() +
+  stat_smooth(method = "loess", color = 'red')
 ```
 
 ### Chart C
