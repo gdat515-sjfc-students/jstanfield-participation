@@ -1,47 +1,38 @@
 ---
-title: "Jstanfield - Class 4 - Participation"
-author: "James Stanfield"
-date: "2/3/2020"
-output: :
-   md_document:
-    variant: gfm
+title: "Jstanfield - class 4 - participation"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(flexdashboard)
+library(tidyverse)
+library(shiny)
 ```
 
+Column {data-width=650}
+-----------------------------------------------------------------------
 
+### Chart A
 
+```{r}
 
+```
 
+Column {data-width=350}
+-----------------------------------------------------------------------
 
+### Chart B
 
+```{r}
 
+```
 
+### Chart C
 
+```{r}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
