@@ -73,9 +73,69 @@ DT::datatable(
 
 med.age.by.sex <- get_acs(geography = "county",
            state = "NY",
-           variables = "B01002_001") %>% View
+           variables = "B01002_001",
+           geometry = TRUE)
 
 ```
+
+```{r}
+med.age.by.sex %>%
+  top_n(5, estimate) %>% 
+  rename(County = GEOID) %>% 
+  mutate(County = as.factor(County)) %>% 
+  ggplot(data = ., aes(y = reorder(County, estimate), x = estimate)) +
+  geom_point() +
+  theme_tufte() +
+  theme(axis.title = element_blank())
+```
+
+```{r}
+sjfc <- leaflet() %>% 
+  addTiles() %>% # add default OpenStreetMap map tiles
+  addMarkers(lng = -77.509, lat = 43.1157, popup = "SJFC:: GDAT515")
+
+sjfc
+```
+
+```{r}
+color.pal <- colorNumeric(palette = "viridis", domain = med.age.by.sex$estimate)
+```
+
+```{r}
+age.map <- leaflet(data = med.age.by.sex) %>% 
+  addTiles() %>% 
+  setView(lng = -77.509, lat = 43.1157, zoom = 8) %>% 
+  addPolygons(fillColor = ~color.pal(med.age.by.sex$estimate),
+              fillOpacity = 0.9,
+              fill = TRUE,
+              weight = 0.7,
+              smoothFactor = 0.3,
+              color = "black",
+              highlight = highlightOptions(weight = 2, #this will control the cover when you hover over each county
+                                           color = "Black",
+                                           fillOpacity = 0.9,
+                                           bringToFront = FALSE),
+              popup = ~paste("<b>County : </b>", GEOID, "<br>",
+                             "<b>Median Age:</b>", estimate)
+              )
+
+age.map
+
+age.map %>% 
+  #addMarkers(lng = -77.509, lat = 43.1157, popup = "SJFC:: GDAT515")
+  addAwesomeMarkers(lng = -77.509, 
+                    lat = 43.1157, 
+                    icon = awesomeIcons("fa-university",  library = 'fa', markerColor = "maroon"))
+```
+
+
+
+
+
+
+
+
+
 
 
 
