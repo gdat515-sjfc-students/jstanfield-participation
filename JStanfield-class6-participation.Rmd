@@ -1,0 +1,98 @@
+---
+title: "Untitled"
+author: "James Stanfield"
+date: "2/17/2020"
+output: 
+  md_document:
+    variant: gfm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+`%notin%` <- Negate(`%in%`)
+
+req.packages <- c("leaflet", "tidycensus", "tidyverse", "ggthemes", "ggExtra", "scales")
+
+if(any(installed.packages() %notin% req.packages)){
+  
+  missing.package.inds <- which(req.packages %notin% installed.packages())
+  
+  install.packages(req.packages[missing.package.inds])
+}
+
+eval(
+  parse(
+    text = paste0('library(', req.packages,')')
+  )
+)
+```
+
+```{r}
+library(leaflet)
+library(tidycensus)
+library(tidyverse)
+library(ggthemes)
+library(ggExtra)
+library(scales)
+```
+
+
+```{r}
+
+
+census_api_key(key = '1b0aadeb046812cd84c564ba593f3064c814bf8b', install = TRUE)
+```
+
+```{r}
+readRenviron("~/.Renviron")
+```
+
+```{r}
+census.2000 <- load_variables(year = 2000, "sf1")
+
+DT::datatable(
+  head(
+    census.2000, n = 20
+  )
+)
+```
+
+```{r}
+acs.2017 <- load_variables(year = 2017, dataset = 'acs1')
+
+DT::datatable(
+  head(
+    acs.2017, n = 33000
+  )
+)
+
+```
+
+```{r}
+
+med.age.by.sex <- get_acs(geography = "county",
+           state = "NY",
+           variables = "B01002_001") %>% View
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
